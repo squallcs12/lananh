@@ -29,7 +29,7 @@
   {% block slider %}{% endblock %}
   {% include '_notification.html' %}
 </div>
-<div id="content" class="hfeed">
+<div id="content" class="container-fluid">
   {% block content %}{% endblock %}
 </div>
 <div class="container-fluid">
@@ -44,9 +44,8 @@
     </div>
   </footer>
 </div>
-
-{% block footerjs %}
-  <script src="{% static 'js/head_define.js' %}"></script>
+<script src="{% static 'js/head_define.js' %}"></script>
+{% block footer-js %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

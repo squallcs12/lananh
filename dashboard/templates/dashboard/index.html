@@ -1,5 +1,33 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
+{% block head-link %}
+  {{ block.super }}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/2.15.2/css/blueimp-gallery.min.css"
+        rel="stylesheet" />
+{% endblock %}
 
 {% block content %}
-  <div style="height: 1000px"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>
+        <a href="{% url 'photologue:pl-gallery-archive' %}">{% trans "Albums" %}</a>
+        ›
+        <a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a>
+      </h3>
+    </div>
+    <div class="col-md-12">
+      {% for photo in gallery.public %}
+        <a href="{{ photo.image.url }}" data-gallery>
+          <img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}">
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% include 'dashboard/gallery/lightbox.html' %}
+{% endblock %}
+
+{% block footer-js %}
+  {{ block.super }}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/2.15.2/js/jquery.blueimp-gallery.min.js"></script>
 {% endblock %}
