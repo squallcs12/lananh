@@ -1,5 +1,8 @@
 Django==1.8.3
+django-bower==5.0.4
 django-extensions==1.3.3
+factory-boy==2.5.2
+fake-factory==0.5.2
 git+https://github.com/Supervisor/supervisor.git
 gunicorn==19.3.0
 psycopg2==2.6.1

@@ -140,3 +140,5 @@ build/Release
 node_modules
 
 
+# bower component
+bower_components/

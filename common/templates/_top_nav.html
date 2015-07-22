@@ -1,0 +1,59 @@
+{% load i18n %}
+{% load common_tags %}
+
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">{% trans "Lan Anh" %}</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                {% if user.is_provider %}
+                    <li class="dropdown">
+                        <a id="my-services" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            {% trans "My Services" %}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{% url 'services:create' %}">New Service</a>
+                            </li>
+                            {% for service in user.service_set.all %}
+                                {% if forloop.counter0 == 0 %}
+                                    <li class="divider"></li>
+                                {% endif %}
+                                <li class="my-service" data-id="{{ service.id }}">
+                                    <a href="{% url 'services:edit' service.id %}">{{ service.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" id="account-link" class="dropdown-toggle" data-toggle="dropdown">
+                            {% include 'common/user_name_block.html' %}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="logout" href="{% url 'accounts:logout' %}">{% trans 'Log out' %}</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li>
+                        <a id="login-nav" href="{% url 'accounts:login' %}">{% trans "Log in" %}</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load staticfiles %}
+<html>
+<head>
+  <title>{% block title %}Home{% endblock %} - {{ SITE_NAME }}</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="cache-control" content="public" />
+  <meta name="robots" content="follow, all" />
+  <meta name="language" content="{{ LANGUAGE_CODE }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{% block meta-description %}{% trans 'Lan Anh' %}{% endblock %}" />
+  <meta name="keywords" content="{% block meta-keywords %}{% endblock %}" />
+  <meta name="author" content="Antipro.VN" />
+  {% block meta %}{% endblock %}
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="home" href="/" />
+  {% block head-link %}
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/{{ theme|default:'cerulean' }}/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.1/toastr.min.css" rel="stylesheet" />
+  {% endblock %}
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+<body id="{% block page_id %}body{% endblock %}">
+{% include '_top_nav.html' %}
+<div class="container-fluid">
+  {% include '_top_banner.html' %}
+  {% block slider %}{% endblock %}
+  {% include '_notification.html' %}
+</div>
+<div id="content" class="hfeed">
+  {% block content %}{% endblock %}
+</div>
+<div class="container-fluid">
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        {% include '_footer_nav.html' %}
+        <p>
+          {% blocktrans %}Powered by <a href="/">Lan Anh</a>{% endblocktrans %}
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+{% block footerjs %}
+  <script src="{% static 'js/head_define.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.1/toastr.min.js"></script>
+{% endblock %}
+<script src="{% static 'js/foot_define.js' %}"></script>
+</body>
+</html>

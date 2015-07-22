@@ -39,8 +39,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'djangobower',
 
+    'accounts',
     'common',
+    'dashboard',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,6 +113,7 @@ USE_TZ = True
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
 )
 
 STATIC_URL = '/static/'
