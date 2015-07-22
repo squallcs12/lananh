@@ -1,3 +1,9 @@
 Django==1.8.3
+django-extensions==1.3.3
+git+https://github.com/Supervisor/supervisor.git
+gunicorn==19.3.0
 psycopg2==2.6.1
 requests==2.7.0
+selenium==2.46.1
+six==1.9.0
+sure==1.2.13
