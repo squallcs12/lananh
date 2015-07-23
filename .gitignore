@@ -143,3 +143,7 @@ node_modules
 # bower component
 bower_components/
 media/
+
+# deploy env
+.config/
+deploy.zip

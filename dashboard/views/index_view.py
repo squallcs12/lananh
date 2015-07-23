@@ -7,10 +7,10 @@ class IndexView(TemplateView):
 
     @staticmethod
     def display_latest_gallery():
-        gallery = Gallery.objects.latest('id')
-        if gallery:
-            return {'gallery': gallery}
-        return {}
+        try:
+            return {'gallery': Gallery.objects.latest('id')}
+        except Gallery.DoesNotExist:
+            return {}
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
