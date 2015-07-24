@@ -27,7 +27,7 @@ def push():
         run('rm {name}.zip'.format(name=now))
 
         with cd(now):
-            sudo("apt-get install -y libjpeg-devel libpng-devel supervisor")
+            sudo("apt-get install -y libjpeg-dev libpng-dev supervisor")
             run('fab deploy')
 
             print("Copy nginx settings")
